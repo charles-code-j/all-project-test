@@ -17,8 +17,8 @@ jobs:
             - name: Build imagem docker
               uses: docker/build-push-action@v4.1.1
               with:
-                context: ./src
-                file: ./Dockerfile
+                context: ./nodejs-crud/src
+                file: ./nodejs-crud/src/Dockerfile
                 push: true
                 tags: charleszt/app-nodejs:${{ github.run_number }}
                     charleszt/app-nodejs:latest
