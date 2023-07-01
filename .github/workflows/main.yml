@@ -20,4 +20,6 @@ jobs:
                 context: ./nodejs-crud/src
                 file: ./nodejs-crud/src/Dockerfile
                 push: true
-                tags: charleszt/app-nodejs:${{ github.run_number }}
+                tags: | 
+                  charleszt/app-nodejs:${{ github.run_number }}
+                  charleszt/app-nodejs:latest
