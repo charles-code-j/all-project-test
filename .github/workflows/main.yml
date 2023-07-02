@@ -23,3 +23,18 @@ jobs:
                 tags: | 
                   charleszt/app-nodejs:${{ github.run_number }}
                   charleszt/app-nodejs:latest
+    deploy:
+      runs-on: ubuntu-latest
+      needs: build
+      steps:
+        - uses: actions/checkout@v3
+        - name: Instalando cli da digitalcean
+          uses: digitalocean/action-doctl@v2
+          with:
+            token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+        - name: configurando kubeconfig na pipeline
+          run: doctl kubernetes cluster kubeconfig save k8s
+        - name: Atualizado imagem  
+          uses: actions-hub/kubectl@master
+          with:
+            args: set image deployment/app-node-deployment app-node=charleszt/app-nodejs:${{ github.run_number }}

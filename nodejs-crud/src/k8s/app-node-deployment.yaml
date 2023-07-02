@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: app-nodes
-        image: charleszt/app-node:1.0
+        image: charleszt/app-nodejs:latest
         resources: {}
         ports:
         - containerPort: 8080
