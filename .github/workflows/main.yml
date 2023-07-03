@@ -35,6 +35,6 @@ jobs:
         - name: configurando kubeconfig na pipeline
           run: doctl kubernetes cluster kubeconfig save k8s
         - name: Atualizado imagem  
-          uses: actions-hub/kubectl@master
-          with:
-            args: kubectl set image deployment/app-node-deployment app-nodes=charleszt/app-nodejs:${{ github.run_number }}
+          shell: bash
+          run: |
+            kubectl set image deployment/app-node-deployment app-nodes=charleszt/app-nodejs:${{ github.run_number }}
