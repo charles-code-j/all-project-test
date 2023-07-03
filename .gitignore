@@ -1,7 +1,7 @@
 **/.terraform
 # .tfstate files
-*.tfstate
-*.tfstate.*
+.tfstate
+.tfstate.*
 *.plan
 .DS_Store
 .history
@@ -11,3 +11,4 @@
 **/node_modules/
 .terraform.lock.hcl
 *.tfvars
+.kubeconfig.yaml
