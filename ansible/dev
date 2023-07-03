@@ -1,0 +1,2 @@
+[test]
+test-1 ansible_ssh_host=localhost ansible_ssh_user=charles

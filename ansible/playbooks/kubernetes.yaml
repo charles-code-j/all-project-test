@@ -1,0 +1,29 @@
+- hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+
+  - name: Update packages
+    apt:
+      name: python3-pip
+      update_cache: yes
+      state: present
+  - name: "Install kubernetes python package"
+    pip:
+      name:
+      - kubernetes
+      - openshift
+      state: present
+  - name: "Create a deployment"
+    become: false
+    k8s:
+      state: present
+      namespace: default
+      src: "{{ item }}"
+      kubeconfig: /home/charles/Project/terraform/kubeconfig.yaml
+    with_items:
+    - /home/charles/Project/nodejs-crud/src/k8s/app-node-deployment.yaml
+    - /home/charles/Project/nodejs-crud/src/k8s/app-node-service.yaml
+    - /home/charles/Project/nodejs-crud/src/k8s/mysql-deployment.yaml
+    - /home/charles/Project/nodejs-crud/src/k8s/mysql-service.yaml
+    - /home/charles/Project/nodejs-crud/src/k8s/mysql-secret.yaml
