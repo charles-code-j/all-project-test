@@ -37,4 +37,4 @@ jobs:
         - name: Atualizado imagem  
           uses: actions-hub/kubectl@master
           with:
-            args: set image deployment/app-node-deployment app-node=charleszt/app-nodejs:${{ github.run_number }}
+            args: set image deployment/app-node-deployment app-nodes=charleszt/app-nodejs:${{ github.run_number }}

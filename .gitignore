@@ -11,4 +11,4 @@
 **/node_modules/
 .terraform.lock.hcl
 *.tfvars
-.kubeconfig.yaml
+**/terraform/kubeconfig.yaml
